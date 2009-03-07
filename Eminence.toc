@@ -1,0 +1,15 @@
+## Interface: 30000
+
+## Title: Eminence
+## Notes: Template for creating new addons
+## Author: Tekkub Stoutwrithe
+## Version: Alpha
+## X-Website: http://www.tekkub.net/
+## X-Email: tekkub-wow@googlegroups.com
+## X-Category: Misc
+
+## OptionalDeps: tekDebug, tekErr, Blizzard_TimeManager
+
+LibStub.lua
+
+BossBlock.lua
