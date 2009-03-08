@@ -11,5 +11,7 @@
 ## OptionalDeps: tekDebug, tekErr, Blizzard_TimeManager
 
 LibStub.lua
-
 BossBlock.lua
+Eminence.lua
+
+Naxx\Gluth.lua
