@@ -86,6 +86,11 @@ end
 function lib:Scan()
 	if not self.scanids then
 		self.scanids = {}
+		if self.engagetrigger then
+			if type(self.engagetrigger) == "table" then for _,id in pairs(self.engagetrigger) do self.scanids[id] = true end
+			else self.scanids[self.engagetrigger] = true end
+		end
+
 		if type(self.mobguid) == "table" then for _,id in pairs(self.mobguid) do self.scanids[id] = true end
 		else self.scanids[self.mobguid] = true end
 	end
