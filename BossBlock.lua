@@ -1,8 +1,4 @@
 
-local lib, oldminor = LibStub:NewLibrary("Eminence-bossblock", 1)
-if not lib then return end
-
-
 local function IsSpam(text)
 	if type(text) ~= "string" then return end
 	if string.find(text, "%*%*%*") then return true end
