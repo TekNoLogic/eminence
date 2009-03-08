@@ -6,20 +6,20 @@
 
 
 -- Decimate every 105 seconds, Frenzy (wipe) after 480 seconds (420 heroic)
-local gluth = Eminence:new()
+local gluth = Eminence:new(15932)
 gluth.mobguid = 15932
 
 
-local started = nil
 local wipetime
 function gluth:Engage()
 	wipetime = GetTime() + (GetCurrentDungeonDifficulty() == 1 and 480 or 420)
-	gluth:CLEU_SPELL_DAMAGE()
+	self:CLEU_SPELL_DAMAGE()
+	self:RegisterCombatLogEvent("SPELL_DAMAGE", 28375, 54426)
+	self:RegisterCombatLogEvent("SPELL_MISSED", 28375, 54426)
 end
 
 
 local last = 0
-gluth:RegisterCombatLogEvent("SPELL_DAMAGE", 28375, 54426)
 function gluth:CLEU_SPELL_DAMAGE() -- Decimate
 	local time = GetTime()
 	if (time - last) > 5 then
@@ -32,6 +32,4 @@ function gluth:CLEU_SPELL_DAMAGE() -- Decimate
 	end
 end
 
-
-gluth:RegisterCombatLogEvent("SPELL_MISSED", 28375, 54426)
 gluth.CLEU_SPELL_MISSED = gluth.CLEU_SPELL_DAMAGE

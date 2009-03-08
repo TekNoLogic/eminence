@@ -4,9 +4,8 @@ local GUIDtoMobID = LibStub("tekmobIDmemo")
 
 -- Phase 1: Stalagg and Feugen, Magnetic Pull (swap tanks) every 30sec
 -- Phase 2: Polarity Shift every 30 seconds, wipe after 6 minutes
-local thad = Eminence:new()
+local thad = Eminence:new(15929, 15930)
 thad.mobguid = 15928
-thad.engagetrigger = {15929, 15930}
 
 
 --~ local stage1warn, pullTime
@@ -27,20 +26,20 @@ function thad:Engage()
 
 --~ 	self:AddCombatListener("SPELL_CAST_START", 28089)
 
-	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
+	self:RegisterCombatLogEvent("SPELL_CAST_SUCCESS", 54517)
+	self:RegisterCombatLogEvent("UNIT_DIED", 0)
+	self:RegisterEvent("CHAT_MSG_RAID_BOSS_EMOTE")
+--~ 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
 end
 
 
-thad:RegisterCombatLogEvent("SPELL_CAST_SUCCESS", 54517)
 function thad:CLEU_SPELL_CAST_SUCCESS()
 	self:RunStopwatch(0, 20, "Mag Pull:")
 end
 
 
 -- When Stalagg and Feugen are dead, switch to polarity timers
-local orig = thad.CLEU_UNIT_DIED
-function thad:CLEU_UNIT_DIED(...)
-	local _, _, _, _, _, guid = ...
+function thad:CLEU_UNIT_DIED(_, _, _, _, _, guid)
 	local mobid = GUIDtoMobID[guid]
 
 	if mobid == 15929 then stalaggdead = true end
@@ -50,13 +49,10 @@ function thad:CLEU_UNIT_DIED(...)
 		wipetime = GetTime() + 360 -- 6 Minutes
 		self:RunStopwatch(0, 30, "Polarity:")
 	end
-
-	return orig(self, ...)
 end
 
 
 --~ function thad:CLEU_SPELL_CAST_START() -- Polarity (+3 sec cast)
-thad:RegisterEvent("CHAT_MSG_RAID_BOSS_EMOTE")
 function thad:CHAT_MSG_RAID_BOSS_EMOTE(event, msg) -- Polarity
 	if msg == "The polarity has shifted!" then
 		if (GetTime() + 30) < wipetime then
