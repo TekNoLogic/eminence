@@ -63,6 +63,7 @@ function CheckForEngage(self, event, ...)
 	end
 end
 
+
 local function Cleanup(self)
 	checkwipeat = nil
 	self:Hide()
@@ -76,6 +77,7 @@ local function Cleanup(self)
 	StopwatchFrame:Hide()
 	return f
 end
+
 
 function CheckForWipe(self, event, ...)
 	if event and event == "COMBAT_LOG_EVENT_UNFILTERED" then
@@ -106,6 +108,7 @@ function CheckForWipe(self, event, ...)
 		self:Hide()
 	end
 end
+
 
 Eminence:SetScript("OnEvent", CheckForEngage)
 Eminence:RegisterEvent("PLAYER_REGEN_DISABLED")
