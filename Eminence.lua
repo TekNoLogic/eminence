@@ -9,7 +9,6 @@ function lib.new()
 	for _,em in pairs(embeds) do f[em] = lib[em] end
 	f:SetScript("OnEvent", lib.OnEvent)
 	f:RegisterEvent("PLAYER_REGEN_DISABLED")
-	f:RegisterCombatLogEvent("UNIT_DIED", 0)
 	return f
 end
 
@@ -113,6 +112,7 @@ function lib:PLAYER_REGEN_DISABLED()
 		self:Hide()
 		self:UnregisterEvent("PLAYER_REGEN_DISABLED")
 		self:RegisterEvent("PLAYER_REGEN_ENABLED")
+		self:RegisterCombatLogEvent("UNIT_DIED", 0)
 		if self.Engage then self:Engage() end -- Engaged, go go go!
 
 	elseif UnitAffectingCombat("player") then
@@ -130,7 +130,7 @@ function lib:PLAYER_REGEN_ENABLED()
 		self.checkwipeat = nil
 		self:Hide()
 		self.engaged = nil
-		self:UnregisterEvent("PLAYER_REGEN_ENABLED")
+		self:UnregisterAllEvents()
 		self:RegisterEvent("PLAYER_REGEN_DISABLED")
 		Stopwatch_Clear()
 		StopwatchFrame:Hide()
