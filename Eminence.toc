@@ -15,6 +15,7 @@ tekmobIDmemo.lua
 
 BossBlock.lua
 Eminence.lua
+Template.lua
 
 Naxx\Gluth.lua
 Naxx\Thaddius.lua

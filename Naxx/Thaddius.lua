@@ -4,7 +4,7 @@ local GUIDtoMobID = LibStub("tekmobIDmemo")
 
 -- Phase 1: Stalagg and Feugen, Magnetic Pull (swap tanks) every 30sec
 -- Phase 2: Polarity Shift every 30 seconds, wipe after 6 minutes
-local thad = LibStub("Eminence-module").new()
+local thad = Eminence:new()
 thad.mobguid = 15928
 thad.engagetrigger = {15929, 15930}
 

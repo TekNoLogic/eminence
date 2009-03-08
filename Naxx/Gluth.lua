@@ -6,7 +6,7 @@
 
 
 -- Decimate every 105 seconds, Frenzy (wipe) after 480 seconds (420 heroic)
-local gluth = LibStub("Eminence-module").new()
+local gluth = Eminence:new()
 gluth.mobguid = 15932
 
 
