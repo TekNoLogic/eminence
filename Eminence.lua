@@ -3,6 +3,9 @@ local lib, oldminor = LibStub:NewLibrary("Eminence-module", 1)
 if not lib then return end
 
 
+local GUIDtoMobID = LibStub("tekmobIDmemo")
+
+
 local embeds = {"RegisterCombatLogEvent", "RunStopwatch", "CLEU_UNIT_DIED", "TestUnit", "Scan", "PLAYER_REGEN_DISABLED", "PLAYER_REGEN_ENABLED"}
 function lib.new()
 	local f = CreateFrame("frame")
@@ -30,15 +33,6 @@ function lib:OnEvent(event, ...)
 	elseif self[event] then return self[event](self, event, ...) end
 end
 
-
-local GUIDtoMobID = setmetatable({}, {
-	__index = function(t,i)
-		if type(i) ~= "string" then return end
-		guid = tonumber((i):sub(-12, -7), 16)
-		t[i] = guid
-		return guid
-	end
-})
 
 function lib:CLEU_UNIT_DIED(_, _, _, _, _, guid)
 	if GUIDtoMobID[guid] ~= self.mobguid then return end

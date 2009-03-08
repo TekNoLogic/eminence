@@ -11,6 +11,8 @@
 ## OptionalDeps: tekDebug, tekErr, Blizzard_TimeManager
 
 LibStub.lua
+tekmobIDmemo.lua
+
 BossBlock.lua
 Eminence.lua
 
