@@ -19,3 +19,11 @@ function RaidNotice_AddMessage(self, message, ...)
 	if self == RaidWarningFrame and IsSpam(message) then return end
 	return o(self, message, ...)
 end
+
+
+-- Gotta hook this bitch or we'll get the noise but no message
+local o2 = RaidWarningFrame_OnEvent
+function RaidWarningFrame_OnEvent(self, event, message, ...)
+	if IsSpam(message) then return end
+	return o2(self, event, message, ...)
+end
