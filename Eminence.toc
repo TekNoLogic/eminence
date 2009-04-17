@@ -18,4 +18,5 @@ Eminence.lua
 Template.lua
 
 Naxx\Gluth.lua
+Naxx\Sapphiron.lua
 Naxx\Thaddius.lua

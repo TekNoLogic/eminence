@@ -41,7 +41,7 @@ end
 
 function thad:CHAT_MSG_RAID_BOSS_EMOTE(event, msg) -- Polarity
 	if msg == "The polarity has shifted!" then
-		if (GetTime() + 30) < wipetime then
+		if not wipetime or (GetTime() + 30) < wipetime then
 			self:RunStopwatch(0, 30, "Polarity:")
 		else
 			self:RunStopwatch(0, wipetime - GetTime(), "Wipe:")
