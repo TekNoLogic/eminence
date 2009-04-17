@@ -1,7 +1,7 @@
 ## Interface: 30000
 
 ## Title: Eminence
-## Notes: Template for creating new addons
+## Notes: Super simple boss timers
 ## Author: Tekkub Stoutwrithe
 ## Version: Alpha
 ## X-Website: http://www.tekkub.net/
