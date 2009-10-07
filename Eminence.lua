@@ -112,3 +112,12 @@ end
 
 Eminence:SetScript("OnEvent", CheckForEngage)
 Eminence:RegisterEvent("PLAYER_REGEN_DISABLED")
+
+
+-- Blinkentime
+local o = StopwatchTicker_OnUpdate
+local function helper(self, ...)
+	if not self.reverse or self.timer >= 6 then return end
+	self:SetAlpha(math.abs(math.cos(self.timer * math.pi)))
+end
+function StopwatchTicker_OnUpdate(self, elapsed, ...) return helper(self, o(self, elapsed, ...)) end
