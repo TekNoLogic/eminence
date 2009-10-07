@@ -2,7 +2,8 @@
 local GUIDtoMobID = LibStub("tekmobIDmemo")
 
 
-local debugf = tekDebug and tekDebug:GetFrame("Eminence")
+local debugf = ChatFrame1
+-- local debugf = tekDebug and tekDebug:GetFrame("Eminence")
 local function Debug(...) if debugf then debugf:AddMessage(string.join(", ", tostringall(...))) end end
 
 

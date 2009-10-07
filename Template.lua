@@ -14,6 +14,7 @@ function Eminence:new(...)
 end
 
 
+-- Pass spellIDs to filter, or 0 to get every trigger of the event
 function template:RegisterCombatLogEvent(event, ...)
 	self.cleu_ids = self.cleu_ids or {}
 	self.cleu_ids[event] = self.cleu_ids[event] or {}
@@ -24,7 +25,7 @@ end
 
 function template:OnEvent(event, ...)
 	if event == "COMBAT_LOG_EVENT_UNFILTERED" then
-		local _, combatevent, _, _, _, _, _, spellID = ...
+		local _, combatevent, _, _, _, _, _, _, spellID = ...
 		local func = "CLEU_"..combatevent
 		if self[func] and self.cleu_ids[combatevent] and (self.cleu_ids[combatevent][spellID] or self.cleu_ids[combatevent][0]) then return self[func](self, ...) end
 

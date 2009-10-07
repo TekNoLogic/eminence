@@ -5,7 +5,7 @@
 -- The Plague Quarter
 
 
--- Decimate every 105 seconds, Frenzy (wipe) after 480 seconds (420 heroic)
+-- Decimate every 105 seconds, Frenzy (wipe) after 480 seconds (420 in 25-man)
 local gluth = Eminence:new(15932)
 gluth.mobguid = 15932
 
@@ -33,3 +33,16 @@ function gluth:CLEU_SPELL_DAMAGE() -- Decimate
 end
 
 gluth.CLEU_SPELL_MISSED = gluth.CLEU_SPELL_DAMAGE
+
+
+--
+-- local test = Eminence:new(26272)
+-- test.mobguid = 26272
+--
+--
+-- function test:UNIT_AURA(event, unit)
+-- 	if unit ~= "player" then return end
+-- 	self:RunStopwatch(0, 10, "Test:")
+-- end
+--
+-- test:RegisterEvent("UNIT_AURA")
