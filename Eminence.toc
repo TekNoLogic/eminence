@@ -17,6 +17,7 @@ BossBlock.lua
 Eminence.lua
 Template.lua
 
+Naxx\Anubrekhan.lua
 Naxx\Gluth.lua
 Naxx\Sapphiron.lua
 Naxx\Thaddius.lua
